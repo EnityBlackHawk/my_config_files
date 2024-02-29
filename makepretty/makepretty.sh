@@ -3,6 +3,7 @@
 IS_ROFI=false
 NAME="mp_theme"
 OOMOX_PATH=~/.cache/wal/colors-oomox
+IMAGE_PATH=${@: -1}
 
 help()
 {
@@ -38,7 +39,7 @@ echo "name: $NAME"
 echo "path: $OOMOX_PATH"
 
 echo "[>] Appling Pywal"
-wal -i ${@: -1}
+wal -i $IMAGE_PATH
 
 echo "[>] Generating GTK theme"
 ./oomox-gtk-theme/change_color.sh -o $NAME -d true -m all $OOMOX_PATH
@@ -52,3 +53,7 @@ cp ~/.cache/wal/colors-rofi-dark.rasi ~/.config/rofi/config.rasi
 
 echo "[>] Coping colors to Waybar"
 sudo cp ~/.cache/wal/colors-waybar.css ~/.config/waybar/colors-waybar.css
+
+echo "[>] Setting on Hyprpaper"
+echo "preload = $IMAGE_PATH" > ~/.config/hypr/hyprpaper.conf
+echo "wallpaper = ,$IMAGE_PATH" >> ~/.config/hypr/hyprpaper.conf 

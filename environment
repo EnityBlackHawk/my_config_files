@@ -1,0 +1,10 @@
+#
+# This file is parsed by pam_env module
+#
+# Syntax: simple "KEY=VAL" pairs on separate lines
+#
+#GTK2_RC_FILES=/usr/share/themes/Adwaita-dark/gtk-2.0/gtkrc
+#QT_STYLE_OVERRIDE=oomox-colors-oomox
+PATH=/home/luan/.local/bin:$PATH
+QT_QPA_PLATFORMTHME=qt5ct
+GTK_THEME=mp_theme

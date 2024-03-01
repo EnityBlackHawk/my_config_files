@@ -47,6 +47,7 @@ echo "[>] Generating GTK theme"
 echo "[>] Updating evironment variable"
 sudo sed -i '/^GTK_THEME/g' /etc/environment
 sudo bash -c "echo 'GTK_THEME=$NAME' >> /etc/environment"
+sudo sed -i '/^$/d' /etc/environment
 
 echo "[>] Updating Rofi"
 cp ~/.cache/wal/colors-rofi-dark.rasi ~/.config/rofi/config.rasi

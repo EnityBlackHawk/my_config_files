@@ -57,4 +57,8 @@ sudo cp ~/.cache/wal/colors-waybar.css ~/.config/waybar/colors-waybar.css
 
 echo "[>] Setting on Hyprpaper"
 echo "preload = $IMAGE_PATH" > ~/.config/hypr/hyprpaper.conf
-echo "wallpaper = ,$IMAGE_PATH" >> ~/.config/hypr/hyprpaper.conf 
+echo "wallpaper = ,$IMAGE_PATH" >> ~/.config/hypr/hyprpaper.conf
+echo "[>] Preloading"
+hyprctl hyprpaper preload "$IMAGE_PATH"
+echo "[>] Appling to current instance"
+hyprpaper hyprpaper wallpaper ",$IMAGE_PATH"

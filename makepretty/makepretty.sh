@@ -62,3 +62,6 @@ echo "[>] Preloading"
 hyprctl hyprpaper preload "$IMAGE_PATH"
 echo "[>] Appling to current instance"
 hyprpaper hyprpaper wallpaper ",$IMAGE_PATH"
+echo "[>] Restarting waybar"
+killall waybar
+waybar & disown

@@ -4,13 +4,12 @@ IS_ROFI=false
 NAME="mp_theme"
 OOMOX_PATH=~/.cache/wal/colors-oomox
 IMAGE_PATH=${@: -1}
-
 help()
 {
     echo "Usage:"
     echo "makepretty [args] [image-path]"
     echo "ARGS:"
-    echo "-r	Apply to rofi"
+    echo "-m    Set monitor name '(Hyprpaper)'"
     echo "-n    Name of the theme (default: mp_theme)"
     echo "-h    Help"
 }
@@ -22,7 +21,7 @@ backup_rofi()
 	mv ~/.config/rofi/config.rasi ~/.config/rofi/config.rasi.backup
 }
 
-while getopts ":n:rh:" option; do
+while getopts ":n:h:m:" option; do
     case $option in
         n) 
             NAME=$OPTARG ;;
@@ -31,7 +30,7 @@ while getopts ":n:rh:" option; do
 	        backup_rofi ;;
         h)
             help
-            exit 0
+            exit;;
     esac
 done
 
@@ -58,10 +57,15 @@ sudo cp ~/.cache/wal/colors-waybar.css ~/.config/waybar/colors-waybar.css
 echo "[>] Setting on Hyprpaper"
 echo "preload = $IMAGE_PATH" > ~/.config/hypr/hyprpaper.conf
 echo "wallpaper = ,$IMAGE_PATH" >> ~/.config/hypr/hyprpaper.conf
-echo "[>] Preloading"
-hyprctl hyprpaper preload "$IMAGE_PATH"
-echo "[>] Appling to current instance"
-hyprpaper hyprpaper wallpaper ",$IMAGE_PATH"
+
+# echo "[>] Preloading"
+# hyprctl hyprpaper preload "$IMAGE_PATH"
+# echo "[>] Appling to current instance"
+# hyprpaper hyprpaper wallpaper ",$IMAGE_PATH"
+
+echo "[>] Restartinh Hyprpaper"
+killall hyprpaper
+hyprpaper & disown
 echo "[>] Restarting waybar"
 killall waybar
 waybar & disown

@@ -4,3 +4,6 @@ git clone https://github.com/themix-project/oomox-gtk-theme.git
 # Install pywal
 sudo pacman -S python-pywal
 
+#Install Sassc
+yay -S sassc
+

@@ -8,3 +8,4 @@
 PATH=/home/luan/.local/bin:$PATH
 QT_QPA_PLATFORMTHME=qt5ct
 GTK_THEME=mp_theme
+GTK_THEME=mp_theme
